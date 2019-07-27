@@ -1,0 +1,22 @@
+{
+  "name": "algorithm-samples",
+  "version": "1.0.0",
+  "description": "These algorithms were inspired by Colt Steele's JavaScript Algorithms and Data Structures Masterclass on Udemy.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sdreyes/Algorithm-Samples.git"
+  },
+  "author": "Shelby Reyes",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sdreyes/Algorithm-Samples/issues"
+  },
+  "homepage": "https://github.com/sdreyes/Algorithm-Samples#readme",
+  "dependencies": {
+    "inquirer": "^6.5.0"
+  }
+}
