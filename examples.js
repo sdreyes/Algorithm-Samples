@@ -5,17 +5,16 @@
 // Given two strings, write a function to determine if the second string is an anagram of the first. An anagram is a word, phrase, or name formed by rearranging the letters of another, such as CINEMA formed from ICEMAN
 
 isAnagram = (strOne, strTwo) => {
-  let strOneCounter = {};
-  let strTwoCounter = {};
-
+  if (strOne.length !== strTwo.length) return false;
+  let strCounter = {};
   for (let letter of strOne) {
-    strOneCounter[letter] = ++strOneCounter[letter] || 1;
+    strCounter[letter] = ++strCounter[letter] || 1;
   }
   for (let letter of strTwo) {
-    strTwoCounter[letter] = ++strTwoCounter[letter] || 1;
+    strCounter[letter]--;
   }
-  for (let key in strOneCounter) {
-    if (strOneCounter[key] !== strTwoCounter[key]) {
+  for (let key in strCounter) {
+    if (strCounter[key]) {
       return false;
     }
   }
@@ -114,3 +113,24 @@ countUniqueValues = (arr) => {
 // countUniqueValues([1, 2, 3, 4, 4, 4, 7, 7, 12, 12, 13]) // 7
 // countUniqueValues([-2, -1, -1, 0, 1]) // 4
 // countUniqueValues([]) // 0
+
+function sameFrequency(numOne, numTwo){
+  numOne = numOne.toString();
+  numTwo = numTwo.toString();
+  if (numOne.length !== numTwo.length) return false;
+  let counter = {};
+  for (let int of numOne) {
+      counter[int] = ++counter[int] || 1;
+  }
+  for (let int of numTwo) {
+      counter[int]--;
+  }
+  for (let key in counter) {
+      if (counter[key]) {
+          return false;
+      }
+  }
+  return true;
+}
+
+// console.log(sameFrequency(14, 34));
