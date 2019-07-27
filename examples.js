@@ -5,9 +5,6 @@
 // Given two strings, write a function to determine if the second string is an anagram of the first. An anagram is a word, phrase, or name formed by rearranging the letters of another, such as CINEMA formed from ICEMAN
 
 isAnagram = (strOne, strTwo) => {
-
-  console.log(`\nTrue or False: ${strOne} is an anagram of ${strTwo}.`);
-
   let strOneCounter = {};
   let strTwoCounter = {};
 
@@ -25,13 +22,13 @@ isAnagram = (strOne, strTwo) => {
   return true;
 }
 
-console.log(isAnagram("", "")); // true
-console.log(isAnagram("aaz", "zza")); // false
-console.log(isAnagram("anagram", "nagaram")); // true
-console.log(isAnagram("rat", "car")); // false
-console.log(isAnagram("awesome", "awesom")) //false
-console.log(isAnagram("qwerty", "qeywrt")); // true
-console.log(isAnagram("texttwisttime", "timetwisttext")); // true
+// isAnagram("", ""); // true
+// isAnagram("aaz", "zza"); // false
+// isAnagram("anagram", "nagaram"); // true
+// isAnagram("rat", "car")); // false
+// isAnagram("awesome", "awesom") //false
+// isAnagram("qwerty", "qeywrt"); // true
+// isAnagram("texttwisttime", "timetwisttext"); // true
 
 // ---------------------------------------------------------------------------------------
 // Frequency Counter Pattern - Squared Numbers in an Array
@@ -60,10 +57,10 @@ same = (arrOne, arrTwo) => {
   return true;
 }
 
-console.log(same([1, 2, 3], [4, 1, 9])); // true
-console.log(same([1, 2, 1], [1, 1, 4])); // true
-console.log(same([1, 2, 3], [1, 9])); // false
-console.log(same([1, 2, 1], [4, 4, 1])); // false
+// same([1, 2, 3], [4, 1, 9]); // true
+// same([1, 2, 1], [1, 1, 4]); // true
+// same([1, 2, 3], [1, 9]); // false
+// same([1, 2, 1], [4, 4, 1]); // false
 
 // ---------------------------------------------------------------------------------------
 // Multiple Pointers Pattern - Sum Zero
@@ -91,9 +88,9 @@ sumZero = arr => {
   }
 }
 
-console.log(sumZero([-3, -2, -1, 0, 1, 2, 3])); // [-3, 3]
-console.log(sumZero([-2, 0, 1, 3])); // undefined
-console.log(sumZero([1, 2, 3])); // undefined
+// sumZero([-3, -2, -1, 0, 1, 2, 3]); // [-3, 3]
+// sumZero([-2, 0, 1, 3]); // undefined
+// sumZero([1, 2, 3]); // undefined
 
 // ---------------------------------------------------------------------------------------
 
