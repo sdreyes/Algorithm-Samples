@@ -1,5 +1,5 @@
 # Algorithm Samples
-## Samples of efficient algorithms to solve problems
+## Samples of efficient algorithms to solve coding interview problems
 
 These algorithms were inspired by Colt Steele's JavaScript Algorithms and Data Structures Masterclass on Udemy.
 
