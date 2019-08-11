@@ -9,9 +9,9 @@ startApp = () => {
       type: "list",
       message: "Which algorithm would you like me to demo?",
       choices: [
-        "Anagrams (Counters)",
-        "Squared Array (Counters)",
-        "Sum Zero (Pointers)"
+        "Anagrams (Counters)"
+        // "Squared Array (Counters)",
+        // "Sum Zero (Pointers)"
       ],
       name: "choice"
     }
