@@ -9,16 +9,11 @@
 // Binary search - Log(N) Time Complexity
 
 let search = (arr, val) => {
-
   console.log(`Looking for the index of "${val}" out of [${arr}]...`)
-
   let min = 0;
   let max = arr.length - 1;
-
   while (min <= max) {
-    console.log(`(min + max) / 2 is ${(min+max)/2}`);
     let middle = Math.floor((min + max) / 2);
-    console.log(`Floored is ${middle}`);
     let currentVal = arr[middle];
 
     if (currentVal < val) {
@@ -44,6 +39,9 @@ let search = (arr, val) => {
 
 // Implement a function called areThereDuplicates which accepts a variable number of arguments, and checks whether there are any duplicates among the arguments passed in. You can solve this using the frequency counter pattern OR the multiple pointers pattern.
 
+// Time complexity - O(n)
+// Space complexity - O(n)
+
 let areThereDuplicates = (...args) => {
   let counter = {};
   for (let val of args) {
@@ -57,6 +55,39 @@ let areThereDuplicates = (...args) => {
   return false;
 }
 
-console.log(areThereDuplicates(1, 2, 3)); // false
-console.log(areThereDuplicates(1, 2, 2)); // true
-console.log(areThereDuplicates("a", "b", "c", "a")); // true
+// console.log(areThereDuplicates(1, 2, 3)); // false
+// console.log(areThereDuplicates(1, 2, 2)); // true
+// console.log(areThereDuplicates("a", "b", "c", "a")); // true
+
+// ---------------------------------------------------------------------------------------
+// Multiple Pointers - Average Pair
+// ---------------------------------------------------------------------------------------
+
+// Write a function called averagePair. Given a sorted array of integers and a target average, determine if there is a pair of values in the array where the average of the pair equals the target average. There may be more than one pair that matches the average target.
+
+// BONUSES:
+// Time complexity - O(n)
+// Space complexity - O(1)
+
+let averagePair = (arr, goal) => {
+  let min = 0;
+  let max = arr.length -1;
+  while (min < max) {
+    let avg = (arr[max] + arr[min]) / 2;
+    if (avg === goal) {
+      return true;
+    }
+    else if (avg > goal) {
+      max--;
+    }
+    else {
+      min++;
+    }
+  }
+  return false;
+}
+
+console.log(averagePair([1, 2, 3], 2.5)); // true
+console.log(averagePair([1, 3, 3, 5, 6, 7, 10, 12, 19], 8)); // true
+console.log(averagePair([-1, 0, 3, 4, 5, 6], 4.1)); // false
+console.log(averagePair([], 4)); // false
