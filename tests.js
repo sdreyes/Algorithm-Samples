@@ -1,3 +1,5 @@
+// These functions are to be refactored to allow for user input in app production
+
 // ---------------------------------------------------------------------------------------
 // Divide and Conquer - Search
 // ---------------------------------------------------------------------------------------
