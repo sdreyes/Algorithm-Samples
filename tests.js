@@ -34,6 +34,29 @@ let search = (arr, val) => {
   return -1;
 }
 
-console.log(search([1, 2, 3, 4, 5, 6], 4)); // returns 3
-console.log(search([1, 2, 3, 4, 5, 6], 6)); // returns 5
-console.log(search([1, 2, 3, 4, 5, 6], 11)); // returns -1
+// console.log(search([1, 2, 3, 4, 5, 6], 4)); // returns 3
+// console.log(search([1, 2, 3, 4, 5, 6], 6)); // returns 5
+// console.log(search([1, 2, 3, 4, 5, 6], 11)); // returns -1
+
+// ---------------------------------------------------------------------------------------
+// Frequency Counter Pattern - Are There Duplicates?
+// ---------------------------------------------------------------------------------------
+
+// Implement a function called areThereDuplicates which accepts a variable number of arguments, and checks whether there are any duplicates among the arguments passed in. You can solve this using the frequency counter pattern OR the multiple pointers pattern.
+
+let areThereDuplicates = (...args) => {
+  let counter = {};
+  for (let val of args) {
+    if (counter[val]) {
+      return true;
+    }
+    else {
+      counter[val] = 1;
+    }
+  }
+  return false;
+}
+
+console.log(areThereDuplicates(1, 2, 3)); // false
+console.log(areThereDuplicates(1, 2, 2)); // true
+console.log(areThereDuplicates("a", "b", "c", "a")); // true
