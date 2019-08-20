@@ -15,8 +15,8 @@ node examples.js
 ## Developing
 
 ```shell
-git clone https://github.com/sdreyes/Bamazon.git
-cd Bamazon/
+git clone https://github.com/sdreyes/Algorithm-Samples.git
+cd Algorithm-Samples/
 npm install
 ```
 
