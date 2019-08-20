@@ -6,7 +6,7 @@
 
 // Given a SORTED array of integers, write a function called search, that accepts a value and returns the index where the value passed to the function is located. If the value is not found, return -1.
 
-// Time Complexity - Log(n)
+// Time Complexity - O(log(n))
 
 let search = (arr, val) => {
   console.log(`Looking for the index of "${val}" out of [${arr}]...`);
