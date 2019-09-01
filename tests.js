@@ -86,10 +86,10 @@ let averagePair = (arr, goal) => {
   return false;
 };
 
-console.log(averagePair([1, 2, 3], 2.5)); // true
-console.log(averagePair([1, 3, 3, 5, 6, 7, 10, 12, 19], 8)); // true
-console.log(averagePair([-1, 0, 3, 4, 5, 6], 4.1)); // false
-console.log(averagePair([], 4)); // false
+// console.log(averagePair([1, 2, 3], 2.5)); // true
+// console.log(averagePair([1, 3, 3, 5, 6, 7, 10, 12, 19], 8)); // true
+// console.log(averagePair([-1, 0, 3, 4, 5, 6], 4.1)); // false
+// console.log(averagePair([], 4)); // false
 
 // ---------------------------------------------------------------------------------------
 // Multiple Pointers - isSubsequence
@@ -97,16 +97,22 @@ console.log(averagePair([], 4)); // false
 
 // Write a function called isSubsequence which takes in two strings and checks whether the characters in the first string form a subsequence of the characters in the second string. In other words, the function should check whether the characters in the first string appear somewhere in the second string, WITHOUT THEIR ORDER CHANGING.
 
-// Complexity limitations: AT LEAST
-
+// Complexity limitations: AT LEAST:
 // Time Complexity - O(n + m)
 // Space Complexity O(1)
 
 let isSubsequence = (strOne, strTwo) => {
-  let i = 0;
   let j = 0;
-
-};
+  for (let i = 0; i < strTwo.length; i++) {
+    if (strTwo[i] === strOne[j]) {
+      j++;
+    }
+    if (j === strOne.length) {
+      return true;
+    }
+  }
+  return false;
+}
 
 console.log(isSubsequence("hello", "hello world")); // true
 console.log(isSubsequence("sing", "sting")); // true
