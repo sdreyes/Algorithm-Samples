@@ -104,13 +104,9 @@ let averagePair = (arr, goal) => {
 let isSubsequence = (strOne, strTwo) => {
   let j = 0;
   for (let i = 0; i < strTwo.length; i++) {
-    if (strTwo[i] === strOne[j]) {
-      j++;
-    }
-    if (j === strOne.length) {
-      return true;
-    }
+    if (strTwo[i] === strOne[j]) j++;
   }
+  if (j === strOne.length) return true;
   return false;
 }
 
