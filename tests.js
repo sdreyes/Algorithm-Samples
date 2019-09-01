@@ -127,6 +127,9 @@ let isSubsequence = (strOne, strTwo) => {
 // Space complexity: O(1)
 
 let maxSubarraySum = (arr, len) => {
+  if (len > arr.length) {
+    return null;
+  }
   let maxSum = 0;
   for (let i = 0; i < len; i++) {
     maxSum += arr[i];
