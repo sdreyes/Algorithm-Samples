@@ -142,7 +142,44 @@ let maxSubarraySum = (arr, len) => {
   return maxSum;
 } 
 
-console.log(maxSubarraySum([100, 200, 300, 400], 2)); // 700
-console.log(maxSubarraySum([1, 4, 2, 10, 23, 3, 1, 0, 20], 4)); // 39
-console.log(maxSubarraySum([-3, 4, 0, -2, 6, -1], 2)); // 5
-console.log(maxSubarraySum([3, -2, 7, -4, 1, -1, 4, -2, 1], 2)); // 5
+// console.log(maxSubarraySum([100, 200, 300, 400], 2)); // 700
+// console.log(maxSubarraySum([1, 4, 2, 10, 23, 3, 1, 0, 20], 4)); // 39
+// console.log(maxSubarraySum([-3, 4, 0, -2, 6, -1], 2)); // 5
+// console.log(maxSubarraySum([3, -2, 7, -4, 1, -1, 4, -2, 1], 2)); // 5
+
+// ---------------------------------------------------------------------------------------
+// Sliding Window - minSubarrayLen
+// ---------------------------------------------------------------------------------------
+
+// Write a function called minSubarrayLen which accepts two parameters - an array of positive integers and a positive integer.
+
+// This function should return the minimal length of a contiguous subarray of which the sum is greater than or equal to the integer passed to the function. If there isn't one, return 0 instead.
+
+// Time Complexity = O(n)
+// Space Complexity = O(1)
+
+let minSubarrayLen = (arr, num) => {
+  let minCount = Infinity;
+  for (let i = 0; i < arr.length; i++) {
+    let pointer = i;
+    let tempSum = 0;
+    let currentCount = 0;
+    while ((tempSum < num) && (pointer < arr.length)) {
+      tempSum += arr[pointer];
+      currentCount += 1;
+      pointer += 1;
+    }
+    if (tempSum >= num) minCount = Math.min(currentCount, minCount);
+  }
+  if (minCount === Infinity) return 0;
+  return minCount;
+}
+
+console.log(minSubarrayLen([2, 3, 1, 2, 4, 3], 7)); // 2 -> because [4, 3] is the smallest subarray
+console.log(minSubarrayLen([2, 1, 6, 5, 4], 9)); // 2 -> because [5, 4] is the smallest subarray
+console.log(minSubarrayLen([3, 1, 7, 11, 2, 9, 8, 21, 62, 33, 19], 52)); // 1 -> because [62] is greater than 52
+console.log(minSubarrayLen([1, 4, 16, 22, 5, 7, 8, 9, 10], 39)); // 3
+console.log(minSubarrayLen([1, 4, 16, 22, 5, 7, 8, 9, 10], 55)); // 5
+console.log(minSubarrayLen([4, 3, 3, 8, 1, 2, 3], 11)); // 2
+console.log(minSubarrayLen([1, 4, 16, 22, 5, 7, 8, 9, 10], 95)); // 0
+
