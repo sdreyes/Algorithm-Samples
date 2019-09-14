@@ -252,7 +252,7 @@ let findLongestSubstring = str => {
       // temp = p2 - p1 + 1
       let temp = p2 - p1;
       // if temp is greater than longest, set longest to temp
-      if (temp > longest) longest = temp;
+      longest = Math.max(temp, longest);
       //p1++ AND p2 = p1 AND counts = {}
       p1++;
       p2 = p1;
@@ -269,10 +269,10 @@ let findLongestSubstring = str => {
   return longest;
 }
 
-// console.log(findLongestSubstring("")); // 0
-// console.log(findLongestSubstring("rithmschool")); // 7
-// console.log(findLongestSubstring("thisisawesome")); // 6
-// console.log(findLongestSubstring("thecatinthehat")); // 7
-// console.log(findLongestSubstring("bbbbbb")); // 1
-// console.log(findLongestSubstring("longestsubstring")); // 8
-// console.log(findLongestSubstring("thisishowwedoit")); // 6
+console.log(findLongestSubstring("")); // 0
+console.log(findLongestSubstring("rithmschool")); // 7
+console.log(findLongestSubstring("thisisawesome")); // 6
+console.log(findLongestSubstring("thecatinthehat")); // 7
+console.log(findLongestSubstring("bbbbbb")); // 1
+console.log(findLongestSubstring("longestsubstring")); // 8
+console.log(findLongestSubstring("thisishowwedoit")); // 6
