@@ -137,13 +137,6 @@ console.log(issSubsequence("hello", "hello world")); // true
 console.log(issSubsequence("sing", "sting")); // true
 console.log(issSubsequence("abc", "abracadabra")); // true
 console.log(issSubsequence("abc", "acb")); // false (order matters)
-=======
-  for (let i = 0; i < strTwo.length; i++) {
-    if (strTwo[i] === strOne[j]) j++;
-  }
-  if (j === strOne.length) return true;
-  return false;
-}
 
 // console.log(isSubsequence("hello", "hello world")); // true
 // console.log(isSubsequence("sing", "sting")); // true
@@ -218,4 +211,3 @@ console.log(minSubarrayLen([1, 4, 16, 22, 5, 7, 8, 9, 10], 55)); // 5
 console.log(minSubarrayLen([4, 3, 3, 8, 1, 2, 3], 11)); // 2
 console.log(minSubarrayLen([1, 4, 16, 22, 5, 7, 8, 9, 10], 95)); // 0
 
->>>>>>> d3b1fafdcf0889f8180ff76c33158958d0e713bc
