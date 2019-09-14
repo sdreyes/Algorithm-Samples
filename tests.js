@@ -86,10 +86,10 @@ let averagePair = (arr, goal) => {
   return false;
 };
 
-console.log(averagePair([1, 2, 3], 2.5)); // true
-console.log(averagePair([1, 3, 3, 5, 6, 7, 10, 12, 19], 8)); // true
-console.log(averagePair([-1, 0, 3, 4, 5, 6], 4.1)); // false
-console.log(averagePair([], 4)); // false
+// console.log(averagePair([1, 2, 3], 2.5)); // true
+// console.log(averagePair([1, 3, 3, 5, 6, 7, 10, 12, 19], 8)); // true
+// console.log(averagePair([-1, 0, 3, 4, 5, 6], 4.1)); // false
+// console.log(averagePair([], 4)); // false
 
 // ---------------------------------------------------------------------------------------
 // Multiple Pointers - isSubsequence
@@ -103,12 +103,37 @@ console.log(averagePair([], 4)); // false
 // Space Complexity O(1)
 
 let isSubsequence = (strOne, strTwo) => {
-  let i = 0;
   let j = 0;
-
+  let final = strOne.length;
+  for (let i = 0; i < strTwo.length; i++) {
+    if (strOne[j] === strTwo[i]) {
+      j++;
+      if (j === final) {
+        return true;
+      }
+    }
+  }
+  return false;
 };
 
 console.log(isSubsequence("hello", "hello world")); // true
 console.log(isSubsequence("sing", "sting")); // true
 console.log(isSubsequence("abc", "abracadabra")); // true
 console.log(isSubsequence("abc", "acb")); // false (order matters)
+
+let issSubsequence = (strOne, strTwo) => {
+  let i = 0;
+  let j = 0;
+  if (!strOne) return true;
+  while (j < strTwo.length) {
+    if (strTwo[j] === strOne[i]) i++;
+    if (i === strOne.length) return true;
+    j++;
+  }
+  return false;
+};
+
+console.log(issSubsequence("hello", "hello world")); // true
+console.log(issSubsequence("sing", "sting")); // true
+console.log(issSubsequence("abc", "abracadabra")); // true
+console.log(issSubsequence("abc", "acb")); // false (order matters)

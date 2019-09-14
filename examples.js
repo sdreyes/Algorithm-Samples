@@ -5,29 +5,33 @@
 // Given two strings, write a function to determine if the second string is an anagram of the first. An anagram is a word, phrase, or name formed by rearranging the letters of another, such as CINEMA formed from ICEMAN
 
 isAnagram = (strOne, strTwo) => {
-  if (strOne.length !== strTwo.length) return false;
-  let strCounter = {};
-  for (let letter of strOne) {
-    strCounter[letter] = ++strCounter[letter] || 1;
-  }
-  for (let letter of strTwo) {
-    strCounter[letter]--;
-  }
-  for (let key in strCounter) {
-    if (strCounter[key]) {
-      return false;
+  if (typeof strOne === "string" && typeof strTwo === "string") {
+    if (strOne.length !== strTwo.length) return false;
+    let strCounter = {};
+    for (let letter of strOne) {
+      strCounter[letter] = ++strCounter[letter] || 1;
     }
+    for (let letter of strTwo) {
+      strCounter[letter]--;
+    }
+    for (let key in strCounter) {
+      if (strCounter[key]) {
+        return false;
+      }
+    }
+    return true;
   }
-  return true;
+  return null; 
 }
 
-// isAnagram("", ""); // true
-// isAnagram("aaz", "zza"); // false
-// isAnagram("anagram", "nagaram"); // true
-// isAnagram("rat", "car")); // false
-// isAnagram("awesome", "awesom") //false
-// isAnagram("qwerty", "qeywrt"); // true
-// isAnagram("texttwisttime", "timetwisttext"); // true
+console.log(isAnagram("", "")); // true
+console.log(isAnagram("aaz", "zza")); // false
+console.log(isAnagram("anagram", "nagaram")); // true
+console.log(isAnagram("rat", "car")); // false
+console.log(isAnagram("awesome", "awesom")) //false
+console.log(isAnagram("qwerty", "qeywrt")); // true
+console.log(isAnagram("texttwisttime", "timetwisttext")); // true
+console.log(isAnagram(2, 3));
 
 // ---------------------------------------------------------------------------------------
 // Frequency Counter Pattern - Squared Numbers in an Array
