@@ -103,7 +103,6 @@ let averagePair = (arr, goal) => {
 
 let isSubsequence = (strOne, strTwo) => {
   let j = 0;
-<<<<<<< HEAD
   let final = strOne.length;
   for (let i = 0; i < strTwo.length; i++) {
     if (strOne[j] === strTwo[i]) {
@@ -116,10 +115,10 @@ let isSubsequence = (strOne, strTwo) => {
   return false;
 };
 
-console.log(isSubsequence("hello", "hello world")); // true
-console.log(isSubsequence("sing", "sting")); // true
-console.log(isSubsequence("abc", "abracadabra")); // true
-console.log(isSubsequence("abc", "acb")); // false (order matters)
+// console.log(isSubsequence("hello", "hello world")); // true
+// console.log(isSubsequence("sing", "sting")); // true
+// console.log(isSubsequence("abc", "abracadabra")); // true
+// console.log(isSubsequence("abc", "acb")); // false (order matters)
 
 let issSubsequence = (strOne, strTwo) => {
   let i = 0;
@@ -133,10 +132,10 @@ let issSubsequence = (strOne, strTwo) => {
   return false;
 };
 
-console.log(issSubsequence("hello", "hello world")); // true
-console.log(issSubsequence("sing", "sting")); // true
-console.log(issSubsequence("abc", "abracadabra")); // true
-console.log(issSubsequence("abc", "acb")); // false (order matters)
+// console.log(issSubsequence("hello", "hello world")); // true
+// console.log(issSubsequence("sing", "sting")); // true
+// console.log(issSubsequence("abc", "abracadabra")); // true
+// console.log(issSubsequence("abc", "acb")); // false (order matters)
 
 // console.log(isSubsequence("hello", "hello world")); // true
 // console.log(isSubsequence("sing", "sting")); // true
@@ -203,11 +202,52 @@ let minSubarrayLen = (arr, num) => {
   return minCount;
 }
 
-console.log(minSubarrayLen([2, 3, 1, 2, 4, 3], 7)); // 2 -> because [4, 3] is the smallest subarray
-console.log(minSubarrayLen([2, 1, 6, 5, 4], 9)); // 2 -> because [5, 4] is the smallest subarray
-console.log(minSubarrayLen([3, 1, 7, 11, 2, 9, 8, 21, 62, 33, 19], 52)); // 1 -> because [62] is greater than 52
-console.log(minSubarrayLen([1, 4, 16, 22, 5, 7, 8, 9, 10], 39)); // 3
-console.log(minSubarrayLen([1, 4, 16, 22, 5, 7, 8, 9, 10], 55)); // 5
-console.log(minSubarrayLen([4, 3, 3, 8, 1, 2, 3], 11)); // 2
-console.log(minSubarrayLen([1, 4, 16, 22, 5, 7, 8, 9, 10], 95)); // 0
+// console.log(minSubarrayLen([2, 3, 1, 2, 4, 3], 7)); // 2 -> because [4, 3] is the smallest subarray
+// console.log(minSubarrayLen([2, 1, 6, 5, 4], 9)); // 2 -> because [5, 4] is the smallest subarray
+// console.log(minSubarrayLen([3, 1, 7, 11, 2, 9, 8, 21, 62, 33, 19], 52)); // 1 -> because [62] is greater than 52
+// console.log(minSubarrayLen([1, 4, 16, 22, 5, 7, 8, 9, 10], 39)); // 3
+// console.log(minSubarrayLen([1, 4, 16, 22, 5, 7, 8, 9, 10], 55)); // 5
+// console.log(minSubarrayLen([4, 3, 3, 8, 1, 2, 3], 11)); // 2
+// console.log(minSubarrayLen([1, 4, 16, 22, 5, 7, 8, 9, 10], 95)); // 0
 
+// ---------------------------------------------------------------------------------------
+// Sliding Window - minSubarrayLen
+// ---------------------------------------------------------------------------------------
+
+// Write a function called findLongestSubstring, which accepts a string and returns the length of the longest substring with all distinct characters.
+
+let findLongestSubstring = str => {
+  let counts = {};
+  let p1 = 0;
+  let p2 = 0;
+  let longest = 0;
+  while (p1 < str.length) {
+    // if str[p2] is in counts, 
+    if (counts[str[p2]] || p2 === str.length) {
+      // temp = p2 - p1 + 1
+      let temp = p2 - p1;
+      // if temp is greater than longest, set longest to temp
+      if (temp > longest) longest = temp;
+      //p1++ AND p2 = p1 AND counts = {}
+      p1++;
+      p2 = p1;
+      // console.log(counts);
+      counts = {};
+      // console.log("\n----COUNTS RESET----\n");
+    }
+    // else counts[str[p2]] = 1 and p2++
+    else {
+      counts[str[p2]] = 1;
+      p2++;
+    }
+  }
+  return longest;
+}
+
+console.log(findLongestSubstring("")); // 0
+console.log(findLongestSubstring("rithmschool")); // 7
+console.log(findLongestSubstring("thisisawesome")); // 6
+console.log(findLongestSubstring("thecatinthehat")); // 7
+console.log(findLongestSubstring("bbbbbb")); // 1
+console.log(findLongestSubstring("longestsubstring")); // 8
+console.log(findLongestSubstring("thisishowwedoit")); // 6
