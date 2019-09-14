@@ -169,10 +169,10 @@ let maxSubarraySum = (arr, len) => {
   return maxSum;
 } 
 
-// console.log(maxSubarraySum([100, 200, 300, 400], 2)); // 700
-// console.log(maxSubarraySum([1, 4, 2, 10, 23, 3, 1, 0, 20], 4)); // 39
-// console.log(maxSubarraySum([-3, 4, 0, -2, 6, -1], 2)); // 5
-// console.log(maxSubarraySum([3, -2, 7, -4, 1, -1, 4, -2, 1], 2)); // 5
+console.log(maxSubarraySum([100, 200, 300, 400], 2)); // 700
+console.log(maxSubarraySum([1, 4, 2, 10, 23, 3, 1, 0, 20], 4)); // 39
+console.log(maxSubarraySum([-3, 4, 0, -2, 6, -1], 2)); // 5
+console.log(maxSubarraySum([3, -2, 7, -4, 1, -1, 4, -2, 1], 2)); // 5
 
 // ---------------------------------------------------------------------------------------
 // Sliding Window - minSubarrayLen
@@ -211,7 +211,7 @@ let minSubarrayLen = (arr, num) => {
 // console.log(minSubarrayLen([1, 4, 16, 22, 5, 7, 8, 9, 10], 95)); // 0
 
 // ---------------------------------------------------------------------------------------
-// Sliding Window - minSubarrayLen
+// Sliding Window - findLongestSubstring
 // ---------------------------------------------------------------------------------------
 
 // Write a function called findLongestSubstring, which accepts a string and returns the length of the longest substring with all distinct characters.
@@ -244,10 +244,10 @@ let findLongestSubstring = str => {
   return longest;
 }
 
-console.log(findLongestSubstring("")); // 0
-console.log(findLongestSubstring("rithmschool")); // 7
-console.log(findLongestSubstring("thisisawesome")); // 6
-console.log(findLongestSubstring("thecatinthehat")); // 7
-console.log(findLongestSubstring("bbbbbb")); // 1
-console.log(findLongestSubstring("longestsubstring")); // 8
-console.log(findLongestSubstring("thisishowwedoit")); // 6
+// console.log(findLongestSubstring("")); // 0
+// console.log(findLongestSubstring("rithmschool")); // 7
+// console.log(findLongestSubstring("thisisawesome")); // 6
+// console.log(findLongestSubstring("thecatinthehat")); // 7
+// console.log(findLongestSubstring("bbbbbb")); // 1
+// console.log(findLongestSubstring("longestsubstring")); // 8
+// console.log(findLongestSubstring("thisishowwedoit")); // 6
