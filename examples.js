@@ -2,7 +2,7 @@
 // Frequency Counter Pattern - Anagrams
 // ---------------------------------------------------------------------------------------
 
-// Given two strings, write a function to determine if the second string is an anagram of the first. An anagram is a word, phrase, or name formed by rearranging the letters of another, such as CINEMA formed from ICEMAN
+// Given two strings, write a function to determine if the second string is an anagram of the first. An anagram is a word, phrase, or name formed by rearranging the letters of another, such as CINEMA formed from ICEMAN.
 
 isAnagram = (strOne, strTwo) => {
   if (typeof strOne === "string" && typeof strTwo === "string") {
