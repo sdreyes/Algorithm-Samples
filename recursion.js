@@ -15,7 +15,7 @@ let power = (base, x) => {
 
 let factorial = num => {
   if (num === 0) return 1;
-  return num * factorial(num-1);
+  return num * factorial(num - 1);
 }
 
 // console.log(factorial(1)) // 1
@@ -30,5 +30,34 @@ let productOfArray = arr => {
   return arr[0] * productOfArray(arr.slice(1));
 }
 
-console.log(productOfArray([1, 2, 3])) // 6
-console.log(productOfArray([1, 2, 3, 10])) // 60
+// console.log(productOfArray([1, 2, 3])) // 6
+// console.log(productOfArray([1, 2, 3, 10])) // 60
+
+// Write a function called recursiveRange which accepts a number and adds up all the numbers from 0 to the number passed to the function
+
+let recursiveRange = num => {
+  if (num === 0) return 0;
+  return (num + recursiveRange(num - 1));
+}
+
+// console.log(recursiveRange(6)) // 21
+// console.log(recursiveRange(10)) // 55
+
+// Write a recursive function called fib which accepts a number and returns the nth number in the Fibonacci sequence. Recall that the Fibonacci sequence is the sequence of whole numbers 1, 1, 2, 3, 5, 8, ... which starts with 1 and 1, and where every number thereafter is equal to the sum of the previous two numbers.
+
+let fib = num => {
+  let sequence = [1, 1];
+  let helper = () => {
+    if (sequence.length === num) return sequence[num - 1];
+    sequence.push(sequence[sequence.length - 1] + sequence[sequence.length - 2]);
+    return helper();
+  }
+  let result = helper();
+  return result;
+}
+
+
+console.log(fib(4)) // 3
+console.log(fib(10)) // 55
+console.log(fib(28)) // 317811
+console.log(fib(35)) // 9227465
