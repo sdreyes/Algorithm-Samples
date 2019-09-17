@@ -56,13 +56,31 @@ let fib = num => {
   return result;
 }
 
-// Refactored fib (solution from course):
-// function fib(n){
-//   if (n <= 2) return 1;
-//   return fib(n-1) + fib(n-2);
-// }
+// console.log(fib(4)); // 3
+// console.log(fib(10)); // 55
+// console.log(fib(28)); // 317811
+// console.log(fib(35)); // 9227465
 
-console.log(fib(4)) // 3
-console.log(fib(10)) // 55
-console.log(fib(28)) // 317811
-console.log(fib(35)) // 9227465
+// Write a recursive function called reverse which accepts a string and returns a new string in reverse.
+
+let reverse = str => {
+  let lastLetter = str[str.length - 1];
+  if (str.length === 0) return "";
+  return lastLetter + reverse(str.substring(0, str.length - 1));
+}
+
+// console.log(reverse("awesome")) // emosewa
+// console.log(reverse("Shelby")) // yblehS
+
+// Write a recursive function called isPalinfrome which returns true if the string passed to it is a palindrome (reads the same forward and backward). Otherwise it returns false.
+
+let isPalindrome = str => {
+  if (str.length <= 1) return true;
+  if (str[0] === str[str.length - 1]) return isPalindrome(str.substring(1, str.length - 1));
+  return false;
+}
+
+console.log(isPalindrome("awesome")); // false
+console.log(isPalindrome("tacocat")); // true
+console.log(isPalindrome("amanaplanacanalpanama")); // true
+console.log(isPalindrome("amanaplanacanalpandemonium")); // false
