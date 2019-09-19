@@ -4,7 +4,7 @@
 
 let power = (base, x) => {
   if (x === 0) return 1;
-  return base * power(base, x-1);
+  return base * power(base, x - 1);
 }
 
 // console.log(power(2, 0)) // 1
@@ -80,7 +80,43 @@ let isPalindrome = str => {
   return false;
 }
 
-console.log(isPalindrome("awesome")); // false
-console.log(isPalindrome("tacocat")); // true
-console.log(isPalindrome("amanaplanacanalpanama")); // true
-console.log(isPalindrome("amanaplanacanalpandemonium")); // false
+// console.log(isPalindrome("awesome")); // false
+// console.log(isPalindrome("tacocat")); // true
+// console.log(isPalindrome("amanaplanacanalpanama")); // true
+// console.log(isPalindrome("amanaplanacanalpandemonium")); // false
+
+// Write a recursive function called someRecursive which accepts an array and a callback. The function returns true if a single value in the array returns true when passed to the callback. otherwise it returns false.
+
+const isOdd = val => val % 2 !== 0;
+
+const someRecursive = (arr, cb) => {
+  if (arr.length === 0) return false;
+  if (cb(arr[arr.length - 1])) return true;
+  arr.pop();
+  return someRecursive(arr, cb);
+}
+
+// console.log(someRecursive([1, 2, 3, 4], isOdd)); // true
+// console.log(someRecursive([4, 6, 8, 9], isOdd)); // true
+// console.log(someRecursive([4, 6, 8], isOdd)); // false
+// console.log(someRecursive([4, 6, 8], val => val > 10)); // false
+
+// Write a recursive function called flatten which accepts an array of arrays and returns a new array with all values flattened
+
+const flatten = arr => {
+  let newArr = [];
+  for (let i = 0; i < arr.length; i++) {
+    if (Array.isArray(arr[i])) {
+      newArr = newArr.concat(flatten(arr[i]))
+    } else {
+      newArr.push(arr[i]);
+    }
+  }
+  return newArr;
+}
+
+console.log(flatten([1, 2, 3, [4, 5]])); // [1, 2, 3, 4, 5]
+console.log(flatten([1, [2, [3, 4], [[5]]]])); // [1, 2, 3, 4, 5]
+console.log(flatten([[1], [2], [3]])); // [1, 2, 3]
+console.log(flatten([[[[1], [[[3]]], [[[[[[3]]]]]]]]])); // [1, 2, 3]
+console.log(flatten([1, [2, 3, [4]]])); // [1, 2, 3, 4]
