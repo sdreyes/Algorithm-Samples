@@ -169,10 +169,10 @@ let maxSubarraySum = (arr, len) => {
   return maxSum;
 } 
 
-console.log(maxSubarraySum([100, 200, 300, 400], 2)); // 700
-console.log(maxSubarraySum([1, 4, 2, 10, 23, 3, 1, 0, 20], 4)); // 39
-console.log(maxSubarraySum([-3, 4, 0, -2, 6, -1], 2)); // 5
-console.log(maxSubarraySum([3, -2, 7, -4, 1, -1, 4, -2, 1], 2)); // 5
+// console.log(maxSubarraySum([100, 200, 300, 400], 2)); // 700
+// console.log(maxSubarraySum([1, 4, 2, 10, 23, 3, 1, 0, 20], 4)); // 39
+// console.log(maxSubarraySum([-3, 4, 0, -2, 6, -1], 2)); // 5
+// console.log(maxSubarraySum([3, -2, 7, -4, 1, -1, 4, -2, 1], 2)); // 5
 
 // ---------------------------------------------------------------------------------------
 // Sliding Window - minSubarrayLen
@@ -269,10 +269,29 @@ let findLongestSubstring = str => {
   return longest;
 }
 
-console.log(findLongestSubstring("")); // 0
-console.log(findLongestSubstring("rithmschool")); // 7
-console.log(findLongestSubstring("thisisawesome")); // 6
-console.log(findLongestSubstring("thecatinthehat")); // 7
-console.log(findLongestSubstring("bbbbbb")); // 1
-console.log(findLongestSubstring("longestsubstring")); // 8
-console.log(findLongestSubstring("thisishowwedoit")); // 6
+// console.log(findLongestSubstring("")); // 0
+// console.log(findLongestSubstring("rithmschool")); // 7
+// console.log(findLongestSubstring("thisisawesome")); // 6
+// console.log(findLongestSubstring("thecatinthehat")); // 7
+// console.log(findLongestSubstring("bbbbbb")); // 1
+// console.log(findLongestSubstring("longestsubstring")); // 8
+// console.log(findLongestSubstring("thisishowwedoit")); // 6
+
+// ---------------------------------------------------------------------------------------
+// Naive String Search - Count number of occurrences of a substring in a longer string
+// ---------------------------------------------------------------------------------------
+
+// Write a function called findLongestSubstring, which accepts a string and returns the length of the longest substring with all distinct characters.
+
+let naiveSearch = (string, substring) => {
+  let count = 0;
+  for (let i = 0; i < string.length; i++) {
+    for (let j = 0; j < substring.length; j++) {
+      if (string[i + j] !== substring[j]) break;
+      if (j === substring.length - 1) count++;
+    }
+  }
+  return count;
+}
+
+console.log(naiveSearch("wowomgzomg", "omg"));
