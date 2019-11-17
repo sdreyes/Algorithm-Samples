@@ -281,7 +281,7 @@ let findLongestSubstring = str => {
 // Naive String Search - Count number of occurrences of a substring in a longer string
 // ---------------------------------------------------------------------------------------
 
-// Write a function called findLongestSubstring, which accepts a string and returns the length of the longest substring with all distinct characters.
+// Write a function called naiveSearch, which returns the number of occurrences of a substring in a longer string.
 
 let naiveSearch = (string, substring) => {
   let count = 0;
@@ -295,3 +295,5 @@ let naiveSearch = (string, substring) => {
 }
 
 console.log(naiveSearch("wowomgzomg", "omg"));
+
+ 
