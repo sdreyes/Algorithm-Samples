@@ -18,7 +18,7 @@ let bubbleSort = arr => {
   return arr;
 }
 
-// console.log(bubbleSort([1,4,7,2,5,54,223,76,2,5,900,43]));
+console.log(bubbleSort([1,4,7,2,5,54,223,76,2,5,900,43]));
 
 // ---------------------------------------------------------------------------------------
 // Selection Sort
@@ -65,3 +65,45 @@ let insertionSort = arr => {
 }
 
 console.log(insertionSort([1,4,7,2,5,54,223,76,2,5,900,43]));
+
+// ---------------------------------------------------------------------------------------
+// Merge Sort
+// ---------------------------------------------------------------------------------------
+
+// Write a function to merge two arrays
+let merge = (arr1, arr2) => {
+  let results = [];
+  let i = 0;
+  let j = 0;
+  // Once you have smaller sorted arrays, merge those arrays with other sorted arrays until you are back at the full length of the array
+  while (i < arr1.length && j < arr2.length) {
+    if (arr1[i] < arr2[j]) {
+      results.push(arr1[i]);
+      i++;
+    } else {
+      results.push(arr2[j]);
+      j++;
+    };
+  };
+  while (i < arr1.length) {
+    results.push(arr1[i]);
+    i++;
+  };
+  while (j < arr2.length) {
+    results.push(arr2[j]);
+    j++;
+  };
+  // Once the array has been merged back together, return the merged and sorted array.
+  return results;
+}
+
+// Break up the array into halves until you have arrays that are empty or have one element
+let mergeSort = arr => {
+  if (arr.length <= 1) return arr;
+  let midpoint = Math.floor(arr.length / 2);
+  let left = mergeSort(arr.slice(0, midpoint));
+  let right = mergeSort(arr.slice(midpoint));
+  return merge(left, right);
+}
+
+console.log(mergeSort([1,4,7,2,5,54,223,76,2,5,900,43]));
