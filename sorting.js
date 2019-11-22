@@ -112,3 +112,47 @@ console.log(mergeSort([1,4,7,2,5,54,223,76,2,5,900,43]));
 // Quick Sort
 // ---------------------------------------------------------------------------------------
 
+// pivot takes in an array, the start index, and the end index
+
+let pivot = (arr, startIdx, endIdx) => {
+  // grab the pivot from the start of the array
+  let pivotVal = arr[startIdx];
+  // current pivot index will be the start index
+  let pivotIdx = startIdx;
+
+
+  // loop over the array from the start + 1 to the end
+  for (let i = startIdx + 1; i <= endIdx; i++) {
+    // if the pivot is greater than the current element
+    // increment the pivot index
+    if (pivotVal > arr[i]) {
+      //swap current element with element at pivotIdx
+      pivotIdx++;
+      let temp = arr[i];
+      arr[i] = arr[pivotIdx]
+      arr[pivotIdx] = temp;
+    }
+  }
+  // at the end of the loop, swap the pivot with the pivot index
+  let temp = arr[pivotIdx];
+  arr[pivotIdx] = pivotVal;
+  arr[startIdx] = temp;
+  // return the pivot index
+  return pivotIdx;
+}
+
+// call the pivot helper on the array
+// When the helper returns the updated pivot index, recursively call the pivot helper on the subarray to the left of that index and to the right of that index
+// Base case is when the subarray is less than 2 elements
+
+let quickSort = (arr, start=0, end=arr.length-1) => {
+  if (start >= end) return arr;
+
+  let pivotPoint = pivot(arr, start, end); // grabbing a pivot point to split the array in two
+
+  quickSort(arr, start, pivotPoint - 1); // left
+  quickSort(arr, pivotPoint + 1, end); // right
+  return arr;
+}
+
+console.log(quickSort([1,4,7,2,5,54,223,76,2,5,900,43]));
