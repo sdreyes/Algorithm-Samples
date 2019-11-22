@@ -103,12 +103,39 @@ let averagePair = (arr, goal) => {
 
 let isSubsequence = (strOne, strTwo) => {
   let j = 0;
+  let final = strOne.length;
   for (let i = 0; i < strTwo.length; i++) {
-    if (strTwo[i] === strOne[j]) j++;
+    if (strOne[j] === strTwo[i]) {
+      j++;
+      if (j === final) {
+        return true;
+      }
+    }
   }
-  if (j === strOne.length) return true;
   return false;
-}
+};
+
+// console.log(isSubsequence("hello", "hello world")); // true
+// console.log(isSubsequence("sing", "sting")); // true
+// console.log(isSubsequence("abc", "abracadabra")); // true
+// console.log(isSubsequence("abc", "acb")); // false (order matters)
+
+let issSubsequence = (strOne, strTwo) => {
+  let i = 0;
+  let j = 0;
+  if (!strOne) return true;
+  while (j < strTwo.length) {
+    if (strTwo[j] === strOne[i]) i++;
+    if (i === strOne.length) return true;
+    j++;
+  }
+  return false;
+};
+
+// console.log(issSubsequence("hello", "hello world")); // true
+// console.log(issSubsequence("sing", "sting")); // true
+// console.log(issSubsequence("abc", "abracadabra")); // true
+// console.log(issSubsequence("abc", "acb")); // false (order matters)
 
 // console.log(isSubsequence("hello", "hello world")); // true
 // console.log(isSubsequence("sing", "sting")); // true
@@ -175,66 +202,98 @@ let minSubarrayLenTemp = (arr, num) => {
   return minCount;
 }
 
-let minSubarrayLen = (arr, num) => {
-  // THERE HAS TO BE A BETTER WAY TO DO THIS
-  let tempSum = 0;
-  let tempCount = 0;
+
+let minnSubarrayLength = (arr, num) => {
+  let total = 0;
+  let start = 0;
+  let end = 0;
   let minCount = Infinity;
-  let i = 0;
-  let j = 0;
-  while (i < arr.length && minCount === Infinity) {
-    tempSum += arr[i];
-    tempCount += 1;
-    i++;
-    if (tempSum >= num) {
-      minCount = tempCount;
+
+  while (start < arr.length) {
+    if (total < num && end < arr.length) {
+      total += arr[end];
+      end++;
     }
-    else if (i === arr.length) {
-      return 0;
+    else if (total >= sum) {
+      minCount = Math.min(minCount, end-start);
+      total -= arr[start];
+      start++;
+    }
+    else {
+      // if the total is still less than the target sum but the end is at the end is at the array length
+      break;
     }
   }
-  while (j < arr.length) {
-    
-  }
-  return minCount;
+  return minCount === Infinity ? 0 : minCount;
 }
 
-console.log(minSubarrayLen([2, 3, 1, 2, 4, 3], 7)); // 2 -> because [4, 3] is the smallest subarray
-console.log(minSubarrayLen([2, 1, 6, 5, 4], 9)); // 2 -> because [5, 4] is the smallest subarray
-console.log(minSubarrayLen([3, 1, 7, 11, 2, 9, 8, 21, 62, 33, 19], 52)); // 1 -> because [62] is greater than 52
-console.log(minSubarrayLen([1, 4, 16, 22, 5, 7, 8, 9, 10], 39)); // 3
-console.log(minSubarrayLen([1, 4, 16, 22, 5, 7, 8, 9, 10], 55)); // 5
-console.log(minSubarrayLen([4, 3, 3, 8, 1, 2, 3], 11)); // 2
-console.log(minSubarrayLen([1, 4, 16, 22, 5, 7, 8, 9, 10], 95)); // 0
+// console.log(minSubarrayLen([2, 3, 1, 2, 4, 3], 7)); // 2 -> because [4, 3] is the smallest subarray
+// console.log(minSubarrayLen([2, 1, 6, 5, 4], 9)); // 2 -> because [5, 4] is the smallest subarray
+// console.log(minSubarrayLen([3, 1, 7, 11, 2, 9, 8, 21, 62, 33, 19], 52)); // 1 -> because [62] is greater than 52
+// console.log(minSubarrayLen([1, 4, 16, 22, 5, 7, 8, 9, 10], 39)); // 3
+// console.log(minSubarrayLen([1, 4, 16, 22, 5, 7, 8, 9, 10], 55)); // 5
+// console.log(minSubarrayLen([4, 3, 3, 8, 1, 2, 3], 11)); // 2
+// console.log(minSubarrayLen([1, 4, 16, 22, 5, 7, 8, 9, 10], 95)); // 0
 
 // ---------------------------------------------------------------------------------------
-// Sliding Window - minSubarrayLen
+// Sliding Window - findLongestSubstring
 // ---------------------------------------------------------------------------------------
 
-// Write a function called findLongestSubstring, which accepts a string and returns the length of the longest substring with all distinct characters
-
-// Time Complexity - O(n)
+// Write a function called findLongestSubstring, which accepts a string and returns the length of the longest substring with all distinct characters.
 
 let findLongestSubstring = str => {
-  let longestSubstring = 0;
-  for (let letter of str) {
-    let stringLetters = {};
-    let currentSubstring = 0;
-    if (!stringLetters[letter]) {
-      stringLetters[letter] = 1;
-      currentSubstring += 1;
-      console.log(stringLetters);
-      console.log(currentSubstring);
+  let counts = {};
+  let p1 = 0;
+  let p2 = 0;
+  let longest = 0;
+  while (p1 < str.length) {
+    // if str[p2] is in counts, 
+    if (counts[str[p2]] || p2 === str.length) {
+      // temp = p2 - p1 + 1
+      let temp = p2 - p1;
+      // if temp is greater than longest, set longest to temp
+      longest = Math.max(temp, longest);
+      //p1++ AND p2 = p1 AND counts = {}
+      p1++;
+      p2 = p1;
+      // console.log(counts);
+      counts = {};
+      // console.log("\n----COUNTS RESET----\n");
     }
-    if (currentSubstring > longestSubstring) longestSubstring = currentSubstring;
+    // else counts[str[p2]] = 1 and p2++
+    else {
+      counts[str[p2]] = 1;
+      p2++;
+    }
   }
-  return longestSubstring;
+  return longest;
 }
 
 // console.log(findLongestSubstring("")); // 0
 // console.log(findLongestSubstring("rithmschool")); // 7
 // console.log(findLongestSubstring("thisisawesome")); // 6
 // console.log(findLongestSubstring("thecatinthehat")); // 7
-// console.log(findLongestSubstring("bbbbbbb")); // 1
+// console.log(findLongestSubstring("bbbbbb")); // 1
 // console.log(findLongestSubstring("longestsubstring")); // 8
 // console.log(findLongestSubstring("thisishowwedoit")); // 6
+
+// ---------------------------------------------------------------------------------------
+// Naive String Search - Count number of occurrences of a substring in a longer string
+// ---------------------------------------------------------------------------------------
+
+// Write a function called naiveSearch, which returns the number of occurrences of a substring in a longer string.
+
+let naiveSearch = (string, substring) => {
+  let count = 0;
+  for (let i = 0; i < string.length; i++) {
+    for (let j = 0; j < substring.length; j++) {
+      if (string[i + j] !== substring[j]) break;
+      if (j === substring.length - 1) count++;
+    }
+  }
+  return count;
+}
+
+console.log(naiveSearch("wowomgzomg", "omg"));
+
+ 
