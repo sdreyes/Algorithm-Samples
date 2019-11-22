@@ -156,3 +156,30 @@ let quickSort = (arr, start=0, end=arr.length-1) => {
 }
 
 console.log(quickSort([1,4,7,2,5,54,223,76,2,5,900,43]));
+
+// ---------------------------------------------------------------------------------------
+// Radix Sort
+// ---------------------------------------------------------------------------------------
+
+// Helper functions: getDigit, digitCount, mostDigits
+
+let getDigit = (num, i) => {
+  return Math.floor(Math.abs(num) / Math.pow(10, i)) % 10;
+}
+
+let digitCount = num => {
+  if (num === 0) return 1;
+  return Math.floor(Math.log10(Math.abs(num))) + 1;
+}
+
+let mostDigits = nums => {
+  let maxDigits = 0;
+  for (let i = 0; i < nums.length; i++) {
+    maxDigits = Math.max(maxDigits, digitCount(nums[i]));
+  }
+  return maxDigits;
+}
+
+let radixSort = arr => {
+  return arr;
+}
