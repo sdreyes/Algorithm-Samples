@@ -15,6 +15,7 @@ class SinglyLinkedList{
     this.tail = null;
     this.length = 0;
   }
+  // Add a value to the end of a single linked list:
   push(val) {
     // This function should accept a value
     // Create a new node using the value passed to the function
@@ -34,6 +35,7 @@ class SinglyLinkedList{
     this.length++;
     return this;
   }
+  // Remove a node from the end of a singly linked list:
   pop() {
     // If there are no nodes in the list, return undefined
     if (!this.head) return undefined;
@@ -56,6 +58,18 @@ class SinglyLinkedList{
       this.tail = null;
     }
     // Return the value of the node removed
+    return current;
+  }
+  // Remove a node from the beginning of a singly linked list:
+  shift() {
+    // If there are no nodes, return undefined
+    if (!this.head) return undefined;
+    let current = this.head;
+    this.head = current.next;
+    this.length--;
+    if (this.length === 0) {
+      this.tail = null;
+    }
     return current;
   }
 }
