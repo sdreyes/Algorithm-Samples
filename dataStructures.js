@@ -72,4 +72,23 @@ class SinglyLinkedList{
     }
     return current;
   }
+  // Add a node to the beginning of a singly linked list:
+  unshift(val) {
+    // Create a new node using the value passed to the function
+    let node = new Node(val);
+    // If there is no head property on the list, set the head and tail to be the newly created node
+    if (!this.head) {
+      this.head = node;
+      this.tail = this.head;
+    // Otherwise set the newly created node's next property to be the current head property on the list
+    } else {
+      node.next = this.head;
+      // Set the head property on the list to be that newly created node
+      this.head = node;
+    }
+    // Increment the length of the list by 1
+    this.length++;
+    // Return the linked list
+    return this;
+  }
 }
