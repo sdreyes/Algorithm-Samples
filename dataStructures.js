@@ -131,6 +131,48 @@ class SinglyLinkedList{
     // Return true
     return true;
   }
+  // Removing a node from the linked list at a specific position:
+  remove(idx) {
+    // If the index is less than zero or greater than or equal to the length, return undefined
+    if (idx < 0 || idx >= this.length) return undefined;
+    // If the index is the same as the length - 1, pop
+    if (idx === this.length - 1) return this.pop();
+    // If the index is 0, shift
+    if (idx === 0) return this.shift();
+    // Otherwise, using the get method, access the node at the index - 1
+    let requestedNode = this.get(idx);
+    let pre = this.get(idx - 1);
+    // Set the next property on that node to be the next of the next node
+    pre.next = requestedNode.next;
+    // Decrement the length
+    this.length--;
+    // Return the value of the node removed
+    return requestedNode;
+  }
+  // Reversing the linked list in place:
+  reverse() {
+    // Create a variable called node and initialize it to the head property
+    let node = this.head;
+    // Swap the head and tail
+    this.head = this.tail
+    this.tail = node;
+    // Create a variable called next
+    let next;
+    // Create a variable called pre
+    let pre = null;
+    // Loop through the list
+    while (node) {
+      // Set next to be the next property on whatever node is
+      next = node.next;
+      // Set the next property on the node to be whatever pre is
+      node.next = pre;
+      // Set pre to be the value of the node variable
+      pre = node;
+      // Set the node variable to be the value of the next variable
+      node = next;
+    }
+    return this;
+  }
 }
 
 let list = new SinglyLinkedList;
@@ -142,7 +184,7 @@ list.push("index 3");
 list.push("index 4");
 console.log("\n\n=======OLD LIST=======\n\n")
 console.dir(JSON.parse(JSON.stringify(list)), {depth: null, colors: true});
-list.insert(3, "new index 3");
+list.reverse();
 console.log("\n\n=======NEW LIST=======\n\n")
 // console.log(JSON.parse(list, null, 2));
 console.dir(JSON.parse(JSON.stringify(list)), {depth: null, colors: true});
