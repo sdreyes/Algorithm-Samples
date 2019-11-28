@@ -93,6 +93,22 @@ class SinglyLinkedList{
   // Get a node based off of an index number:
   get(idx) {
     // If the index is less than zero or greater than or equal to the length of the list, return null
+    if (idx < 0 || idx >= this.length) return null;
     // Loop through the list until you reach the index and return the node at that specific index
+    let current = this.head;
+    for (let i = 0; i < idx; i++) {
+      current = current.next
+    }
+    return current;
+  }
+  // Change a node's value at a specified index
+  set(idx, val) {
+    // Use get method to find the specific node
+    let oldNode = this.get(idx);
+    // If the node is not found, return false
+    if (!oldNode) return false;
+    // If the node is found, set the value of that node to be the value passed to the function and return true
+    oldNode.val = val;
+    return true;
   }
 }
