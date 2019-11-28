@@ -101,7 +101,7 @@ class SinglyLinkedList{
     }
     return current;
   }
-  // Change a node's value at a specified index
+  // Change a node's value at a specified index:
   set(idx, val) {
     // Use get method to find the specific node
     let oldNode = this.get(idx);
@@ -111,4 +111,39 @@ class SinglyLinkedList{
     oldNode.val = val;
     return true;
   }
+  // Adding a node to the linked list at a specific position:
+  insert(idx, val) {
+    // If the index is less than zero or greater than the length, return false
+    if (idx < 0 || idx > this.length) return false;
+    // If the index is the same as the length, push the new node to the end of the list
+    if (idx === this.length) return !!this.push(val);
+    // If the index is 0, unshift a new node to the start of the list
+    if (idx === 0) return !!this.unshift(val);
+    // Otherwise, using the get method, access the node at the index - 1
+    let pre = this.get(idx-1);
+    // Set the next property on the new node to be the previous next
+    let newNode = new Node(val);
+    newNode.next = pre.next
+    // Set the next property on the previous node to be the new node
+    pre.next = newNode
+    // Increment the length
+    this.length++;
+    // Return true
+    return true;
+  }
 }
+
+let list = new SinglyLinkedList;
+
+list.push("index 0");
+list.push("index 1");
+list.push("index 2");
+list.push("index 3");
+list.push("index 4");
+console.log("\n\n=======OLD LIST=======\n\n")
+console.dir(JSON.parse(JSON.stringify(list)), {depth: null, colors: true});
+list.insert(3, "new index 3");
+console.log("\n\n=======NEW LIST=======\n\n")
+// console.log(JSON.parse(list, null, 2));
+console.dir(JSON.parse(JSON.stringify(list)), {depth: null, colors: true});
+
