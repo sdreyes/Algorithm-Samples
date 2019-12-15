@@ -188,4 +188,3 @@ list.reverse();
 console.log("\n\n=======NEW LIST=======\n\n")
 // console.log(JSON.parse(list, null, 2));
 console.dir(JSON.parse(JSON.stringify(list)), {depth: null, colors: true});
-
