@@ -122,6 +122,14 @@ class DoublyLinkedList {
     // Return the node once it is found
     return current;
   }
+  set(idx, val) {
+    let node = this.get(idx);
+    if (node !== null) {
+      node.val = val;
+      return true;
+    }
+    return false;
+  }
 }
 
 let list = new DoublyLinkedList();
@@ -132,5 +140,6 @@ list.push(3);
 list.push(4);
 list.push(5);
 list.push(6);
+list.set(6, "HELLO");
 
-console.log(list.get(5));
+console.log(list);
