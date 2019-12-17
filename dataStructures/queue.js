@@ -32,7 +32,7 @@ class Queue {
     // Decrement the size
     this.size--;
     // Return value of the node dequeued
-    return this.size;
+    return oldFirst.val;
   }
 }
 
